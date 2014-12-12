@@ -1,4 +1,5 @@
-/* jQuery Resizable Columns v0.1.0 | http://dobtco.github.io/jquery-resizable-columns/ | Licensed MIT | Built Fri Dec 05 2014 22:21:04 */
+/* jQuery Resizable Columns v0.1.0 | http://dobtco.github.io/jquery-resizable-columns/ | Licensed MIT | Built Fri Dec 12 2014 15:01:19 */
+/* jQuery Resizable Columns v0.1.0 | http://dobtco.github.io/jquery-resizable-columns/ | Licensed MIT | Built Fri Dec 12 2014 14:56:23 */
 var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __slice = [].slice;
 
@@ -80,6 +81,9 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         return function(_, el) {
           var $el;
           $el = $(el);
+          if($el.attr('data-noresize') != null) {
+            return;
+          }
           return setWidth($el[0], $el.outerWidth() / _this.$table.width() * 100);
         };
       })(this));
@@ -226,6 +230,14 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
           return data[option].apply(data, args);
         }
       });
+    },
+    destroyResizableColumns: function() {
+      var $table = $(this);
+      var data = $table.data('resizableColumns');
+      if(data) {
+        data.restoreColumnWidths();
+        data.destroy();
+      }
     }
   });
 })(window.jQuery, window);

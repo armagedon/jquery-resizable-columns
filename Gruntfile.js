@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-	var tasks = ['coffee', 'less', 'uglify', 'usebanner'];
+	var tasks = ['less', 'uglify', 'usebanner'];
 
 	grunt.loadNpmTasks('grunt-banner');
 	grunt.loadNpmTasks('grunt-contrib-coffee');
