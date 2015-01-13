@@ -1,3 +1,4 @@
+/* jQuery Resizable Columns v0.1.0 | http://dobtco.github.io/jquery-resizable-columns/ | Licensed MIT | Built Tue Jan 13 2015 10:57:56 */
 /* jQuery Resizable Columns v0.1.0 | http://dobtco.github.io/jquery-resizable-columns/ | Licensed MIT | Built Fri Dec 12 2014 15:01:19 */
 /* jQuery Resizable Columns v0.1.0 | http://dobtco.github.io/jquery-resizable-columns/ | Licensed MIT | Built Fri Dec 12 2014 14:56:23 */
 var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
@@ -114,10 +115,12 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         return function(_, el) {
           var $el;
           $el = $(el);
-          return $el.css({
-            left: $el.data('th').outerWidth() + ($el.data('th').offset().left - _this.$handleContainer.offset().left),
-            height: _this.options.resizeFromBody ? _this.$table.height() : _this.$table.find('thead').height()
-          });
+          if($el.data('th')) {
+            return $el.css({
+              left: $el.data('th').outerWidth() + ($el.data('th').offset().left - _this.$handleContainer.offset().left),
+              height: _this.options.resizeFromBody ? _this.$table.height() : _this.$table.find('thead').height()
+            });
+          }
         };
       })(this));
     };
